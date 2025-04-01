@@ -1,0 +1,19 @@
+name = "CodingTheoryUtils"
+uuid = "3d410ee0-b2cd-4e54-aa06-374a4e0e0b7f"
+authors = ["Hironori Uchikawa <huchkw@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+GaloisFields = "8d0d7f98-d412-5cd4-8397-071c807280aa"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Polynomials = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+Documenter = "1.10.0"
+GaloisFields = "1.2.2"
+LinearAlgebra = "1.11.0"
+Polynomials = "3.2.13"
+Reexport = "1.2.2"
