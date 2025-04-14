@@ -33,7 +33,7 @@ To install the package, use the Julia package manager:
 
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/uchkw/CodingTheoryUtils.jl.git")
+Pkg.add("CodingTheoryUtils")
 ```
 
 ## Usage
