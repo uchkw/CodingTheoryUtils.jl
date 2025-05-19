@@ -3,7 +3,4 @@
 .DS_Store
 .vscode
 oldrepo/
-todo.md
-task.md
-task2.md
-notification.md
+logs/
