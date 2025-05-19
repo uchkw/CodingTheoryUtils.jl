@@ -22,7 +22,7 @@ def update_version(file_path, new_version):
     # バージョン行を更新
     updated_content = re.sub(
         r'(version\s*=\s*")[^"]+(")',
-        f'\\1{new_version}\\2',
+        rf'\g<1>{new_version}\g<2>',
         content
     )
     
@@ -37,7 +37,7 @@ def update_compat_version(file_path, new_version):
     # [compat]セクションのバージョンを更新
     updated_content = re.sub(
         r'(CodingTheoryUtils\s*=\s*")[^"]+(")',
-        f'\\1{new_version}\\2',
+        rf'\g<1>{new_version}\g<2>',
         content
     )
     
