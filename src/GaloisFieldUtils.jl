@@ -21,7 +21,6 @@ export field_size,
        F2p,
        trace,
        get_tr_one_elem,
-       inv,
        get_minimum_polynomial,
        get_conjugates,
        get_roots,
@@ -1339,6 +1338,34 @@ function num_terms(f::Polynomial{F})::Int where F <: GaloisFields.AbstractGalois
         !iszero(coeff) && (count += 1)
     end
     return count
+end
+
+"""
+    log(α::F, a::F) where F <: AbstractGaloisField
+
+Compute the logarithm of `a` in base `α` in the Galois field `F`.
+
+# Arguments
+- `α::F`: The base of the logarithm.
+- `a::F`: The value to compute the logarithm of.
+
+# Returns
+- `Int`: The discrete logarithm of `a` base `α` if it exists.
+- `Inf`: If `a` is zero.
+- `nothing`: If `a` is not a power of `α`.
+
+"""
+function Base.log(α::F, a::F) where {F <: GaloisFields.AbstractGaloisField}
+    iszero(a)   && return Inf
+    isone(a)    && return 0
+
+    ord = length(F) - 1          
+    pow = one(F)
+    for k in 0:ord-1
+        pow == a && return k
+        pow *= α
+    end
+    return nothing
 end
 
 end # module GaloisFieldUtils 

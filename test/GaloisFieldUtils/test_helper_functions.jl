@@ -1,4 +1,5 @@
 using Test
+using GaloisFields
 using CodingTheoryUtils
 using Polynomials
 
@@ -37,4 +38,28 @@ end
     @test num_terms(p6) == 3
     p7 = Polynomial([GF8(0), GF8(0)]) # Zero polynomial
     @test num_terms(p7) == 0
+end
+
+@testset "log function" begin
+    # GF(2^3) の例
+    # α^i の対数が正しく返るか
+    for i in 0:6
+        @test log(α, α^i) == i
+    end
+    # 1の対数は0
+    @test log(α, GF8(1)) == 0
+    # 0の対数はInf
+    @test log(α, GF8(0)) == Inf
+    # α^i でない値（定義外）は何も返さない（現状はnothing）
+    # 例: α^7 = 1 なので、α^7は0乗に等しい
+    # 例: α^3 * α^4 = α^7 = 1
+    # 例: α^2 + α^3 などは原始元の冪でない
+    # ただし現状の実装ではforループ外は何も返さない
+    # GF(2^2) でも同様にテスト
+    F4, β = GaloisField(2, 2, :β)
+    for i in 0:2
+        @test log(β, β^i) == i
+    end
+    @test log(β, F4(1)) == 0
+    @test log(β, F4(0)) == Inf
 end 
