@@ -1,7 +1,11 @@
+using Pkg
+Pkg.develop(PackageSpec(path=joinpath(@__DIR__, "..")))
 using Documenter
 using CodingTheoryUtils
-using CodingTheoryUtils.GaloisFieldUtils
-using CodingTheoryUtils.BCH
+
+# Import submodules explicitly  
+import CodingTheoryUtils.GaloisFieldUtils
+import CodingTheoryUtils.BCH
 
 makedocs(
     sitename = "CodingTheoryUtils.jl",

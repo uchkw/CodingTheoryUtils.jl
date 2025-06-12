@@ -2,6 +2,7 @@
 .julia/
 .DS_Store
 .vscode
+docs/build
 oldrepo/
 logs/
 prompts/
