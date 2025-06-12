@@ -4,5 +4,5 @@
 ```
 
 ```@autodocs
-Modules = [CodingTheoryUtils]
+Modules = [CodingTheoryUtils, CodingTheoryUtils.GaloisFieldUtils, CodingTheoryUtils.BCH]
 ```
