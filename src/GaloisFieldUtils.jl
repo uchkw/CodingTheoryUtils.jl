@@ -35,7 +35,8 @@ export field_size,
        string2coefvec,
        string2F2poly,
        one_hot_vector,
-       num_terms
+       num_terms,
+       write_bmat_file
 
 """
     field_size(a::GaloisFields.AbstractGaloisField)::Int
@@ -1366,6 +1367,51 @@ function Base.log(α::F, a::F) where {F <: GaloisFields.AbstractGaloisField}
         pow *= α
     end
     return nothing
+end
+
+"""
+    write_bmat_file(H::Matrix, filename::String)
+
+Write a matrix to a file in bmat format.
+
+The bmat format consists of:
+- First line: number of rows and columns separated by a space
+- Following lines: matrix elements separated by spaces
+
+# Arguments
+- `H::Matrix`: The matrix to write (can be Int or F2 matrix)
+- `filename::String`: The output filename
+
+# Examples
+```julia
+H = [1 0 1; 0 1 1]
+write_bmat_file(H, "matrix.bmat")
+
+# F2 matrix example
+H_F2 = [F2(1) F2(0) F2(1); F2(0) F2(1) F2(1)]
+write_bmat_file(H_F2, "matrix_f2.bmat")
+```
+"""
+function write_bmat_file(H::Matrix, filename::String)
+    rows, cols = size(H)
+    
+    # Convert F2 matrix to Int if necessary
+    if eltype(H) <: GaloisFields.AbstractGaloisField
+        H_int = from_f2mat_to_intmat(H)
+    else
+        H_int = H
+    end
+    
+    open(filename, "w") do file
+        # Write matrix dimensions
+        println(file, "$rows $cols")
+        
+        # Write matrix elements
+        for i in 1:rows
+            row_str = join(H_int[i, :], " ")
+            println(file, row_str)
+        end
+    end
 end
 
 end # module GaloisFieldUtils 

@@ -4,3 +4,6 @@
 .vscode
 oldrepo/
 logs/
+prompts/
+tmp/
+CLAUDE.md

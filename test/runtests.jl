@@ -19,3 +19,7 @@ include("GaloisFieldUtils/test_display.jl")
 include("GaloisFieldUtils/test_string_conversion.jl")
 include("GaloisFieldUtils/test_helper_functions.jl")
 include("GaloisFieldUtils/test_documentation.jl")
+include("GaloisFieldUtils/test_bmat_output.jl")
+
+# Include BCH tests
+include("BCH/test_bch.jl")
